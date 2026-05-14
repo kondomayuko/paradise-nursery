@@ -29,7 +29,7 @@ function LandingPage() {
 
 function App() {
   return (
-    <Router>
+    <Router basename="/paradise-nursery">
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/products" element={<ProductList />} />

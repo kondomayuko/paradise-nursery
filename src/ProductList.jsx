@@ -3,6 +3,13 @@ import { useDispatch } from 'react-redux';
 import { addItem } from './CartSlice';
 import Navbar from './Navbar';
 
+import snakePlant from './assets/snake-plant.png';
+import spiderPlant from './assets/spider-plant.png';
+import peaceLily from './assets/peace-lily.png';
+import lavender from './assets/lavender.png';
+import jasmine from './assets/jasmine.png';
+import aloeVera from './assets/aloe-vera.png';
+
 function ProductList() {
   const dispatch = useDispatch();
   const [addedToCart, setAddedToCart] = useState({});
@@ -12,22 +19,22 @@ function ProductList() {
     {
       category: "Air Purifying Plants",
       plants: [
-        { name: "Snake Plant", image: "/snake-plant.png", description: "Produces oxygen at night", cost: "$15" },
-        { name: "Spider Plant", image: "/spider-plant.png", description: "Filters formaldehyde", cost: "$12" },
-        { name: "Peace Lily", image: "/peace-lily.png", description: "Removes mold spores", cost: "$18" }
+        { name: "Snake Plant", image: snakePlant, description: "Produces oxygen at night", cost: "$15" },
+        { name: "Spider Plant", image: spiderPlant, description: "Filters formaldehyde", cost: "$12" },
+        { name: "Peace Lily", image: peaceLily, description: "Removes mold spores", cost: "$18" }
       ]
     },
     {
       category: "Aromatic Fragrant Plants",
       plants: [
-        { name: "Lavender", image: "/lavender.png", description: "Calming scent", cost: "$20" },
-        { name: "Jasmine", image: "/jasmine.png", description: "Sweet fragrance", cost: "$18" }
+        { name: "Lavender", image: lavender, description: "Calming scent", cost: "$20" },
+        { name: "Jasmine", image: jasmine, description: "Sweet fragrance", cost: "$18" }
       ]
     },
     {
       category: "Succulents",
       plants: [
-        { name: "Aloe Vera", image: "/aloe-vera.png", description: "Healing properties", cost: "$14" }
+        { name: "Aloe Vera", image: aloeVera, description: "Healing properties", cost: "$14" }
       ]
     }
   ];
