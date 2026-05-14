@@ -1,16 +1,29 @@
-# React + Vite
+# Paradise Nursery
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Repository Name:** e-plantShopping
 
-Currently, two official plugins are available:
+## Overview
+Paradise Nursery is a responsive frontend e-commerce web application designed for plant enthusiasts. The application provides a serene, user-friendly interface for browsing a variety of house plants, learning about their unique benefits, and seamlessly adding them to a digital shopping cart. 
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+This project demonstrates modern web development practices, featuring a multi-page routing system, global state management for the shopping cart, and a component-based architecture.
 
-## React Compiler
+## Features
+* **Landing Page:** A welcoming entry point featuring the company's mission statement and an intuitive "Get Started" call-to-action.
+* **Product Listing Page:** Displays a curated selection of house plants organized by categories (e.g., Air Purifying, Aromatic, Succulents). Users can easily view plant details, pricing, and add items to their cart.
+* **Interactive Shopping Cart:** A dynamic cart that allows users to:
+  * View added plants with their thumbnails and unit prices.
+  * Increase or decrease item quantities.
+  * Remove specific items entirely.
+  * See real-time updates for individual item totals and the overall cart total.
+* **Dynamic Navigation:** A persistent navigation bar with a shopping cart icon that automatically updates to reflect the total number of items currently in the cart.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Technologies Used
+* **React** - JavaScript library for building user interfaces.
+* **Vite** - Next-generation frontend tooling and build environment.
+* **Redux Toolkit** - Global state management for handling the shopping cart logic.
+* **React Router** - Client-side routing for seamless page navigation without reloading.
+* **CSS3** - Custom styling for a clean, green, and nature-inspired aesthetic.
+* **GitHub Pages** - Live application deployment and hosting.
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Deployment
+This application is deployed and hosted live using GitHub Pages.
