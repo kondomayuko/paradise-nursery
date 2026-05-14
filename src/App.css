@@ -1,0 +1,577 @@
+/* Paradise Nursery — aligned with reference layouts (landing, listing, cart) */
+
+:root {
+  --accent-green: #4caf50;
+  --accent-green-dark: #43a047;
+  --accent-green-darker: #2e7d32;
+  --nav-green: #4caf50;
+  --text-black: #212121;
+  --text-gray: #424242;
+  --muted-line: #cfd8dc;
+  --page-gray: #eceff1;
+  --card-white: #ffffff;
+  --sale-red: #e53935;
+  --delete-red: #d32f2f;
+  --nav-height: 5.5rem;
+  --font-stack: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-stack);
+  color: var(--text-black);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ----- Shared navbar (listing + cart) ----- */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  min-height: var(--nav-height);
+  padding: 0.65rem 1.75rem;
+  background: var(--nav-green);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.18);
+}
+
+.navbar-brand {
+  grid-column: 1;
+  justify-self: start;
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  text-decoration: none;
+  color: #fff;
+}
+
+.navbar-logo {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.35rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.navbar-brand-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  line-height: 1.2;
+}
+
+.navbar-title {
+  font-weight: 700;
+  font-size: 1.15rem;
+  letter-spacing: 0.01em;
+}
+
+.navbar-tagline {
+  font-size: 0.78rem;
+  font-style: italic;
+  opacity: 0.95;
+  margin-top: 0.15rem;
+}
+
+.navbar-plants {
+  grid-column: 2;
+  justify-self: center;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1.1rem;
+  padding: 0.35rem 0.75rem;
+}
+
+.navbar-plants:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.navbar-cart-link {
+  grid-column: 3;
+  justify-self: end;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  text-decoration: none;
+  color: #fff;
+  position: relative;
+}
+
+.navbar-cart-icon {
+  font-size: 1.35rem;
+  line-height: 1;
+  filter: brightness(0) invert(1);
+}
+
+.navbar .cart-count {
+  position: absolute;
+  top: -0.35rem;
+  right: -0.5rem;
+  min-width: 1.35rem;
+  height: 1.35rem;
+  padding: 0 0.3rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #000;
+  background: #fff;
+  border-radius: 999px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* ----- Products listing page ----- */
+.products-page {
+  min-height: 100vh;
+  background: var(--page-gray);
+}
+
+.product-grid {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: calc(var(--nav-height) + 1.75rem) 1.5rem 3rem;
+}
+
+.category-section {
+  margin-bottom: 2.5rem;
+}
+
+.category-heading-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin: 0 auto 1.75rem;
+  max-width: 42rem;
+}
+
+.category-heading-wrap::before,
+.category-heading-wrap::after {
+  content: "";
+  flex: 1 1 0;
+  max-width: 8rem;
+  height: 2px;
+  background: var(--text-black);
+}
+
+.category-heading-wrap h2 {
+  margin: 0;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--text-black);
+  text-align: center;
+  white-space: nowrap;
+}
+
+.plant-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+@media (max-width: 900px) {
+  .plant-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .plant-list {
+    grid-template-columns: 1fr;
+  }
+
+  .navbar {
+    grid-template-columns: 1fr;
+    grid-auto-rows: auto;
+    gap: 0.75rem;
+    justify-items: center;
+    text-align: center;
+  }
+
+  .navbar-brand {
+    grid-column: 1;
+    justify-self: center;
+    flex-direction: column;
+  }
+
+  .navbar-brand-text {
+    align-items: center;
+  }
+
+  .navbar-plants {
+    grid-column: 1;
+  }
+
+  .navbar-cart-link {
+    grid-column: 1;
+    justify-self: center;
+  }
+}
+
+.plant-card {
+  position: relative;
+  background: var(--card-white);
+  border-radius: 4px;
+  padding: 1.25rem 1rem 1.35rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.65rem;
+}
+
+.plant-sale-badge {
+  position: absolute;
+  top: 0.65rem;
+  right: 0.65rem;
+  background: var(--sale-red);
+  color: #fff;
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  padding: 0.25rem 0.45rem;
+  border-radius: 2px;
+  line-height: 1;
+}
+
+.plant-card h3 {
+  margin: 0;
+  padding: 0 2rem;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-black);
+  order: 1;
+}
+
+.plant-thumbnail {
+  order: 2;
+  width: 100%;
+  max-width: 220px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 2px;
+  background: #f5f5f5;
+}
+
+.plant-price {
+  order: 3;
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--sale-red);
+}
+
+.plant-description {
+  order: 4;
+  margin: 0;
+  font-size: 0.82rem;
+  font-style: italic;
+  color: var(--text-black);
+  line-height: 1.45;
+  padding: 0 0.35rem;
+}
+
+.plant-card button {
+  order: 5;
+  margin-top: 0.35rem;
+  width: 100%;
+  max-width: 200px;
+  padding: 0.55rem 1rem;
+  border: none;
+  border-radius: 4px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  cursor: pointer;
+  background: var(--accent-green);
+  color: #fff;
+  transition: background 0.2s ease;
+}
+
+.plant-card button:hover:not(:disabled) {
+  background: var(--accent-green-dark);
+}
+
+.plant-card button:disabled {
+  background: #a5d6a7;
+  color: #1b5e20;
+  cursor: default;
+}
+
+/* ----- Shopping cart page ----- */
+.cart-page {
+  min-height: 100vh;
+  background: var(--page-gray);
+  background-image: linear-gradient(
+      rgba(236, 239, 241, 0.92),
+      rgba(236, 239, 241, 0.92)
+    ),
+    url("/nursery-hero-bg.png");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.cart-container {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: calc(var(--nav-height) + 1.5rem) 1.25rem 2.5rem;
+}
+
+.cart-total-heading {
+  margin: 0 0 1.25rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text-black);
+  text-align: center;
+}
+
+.cart-items-panel {
+  background: var(--card-white);
+  border-radius: 4px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  margin-bottom: 1.75rem;
+}
+
+.cart-item {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 1.25rem;
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid var(--muted-line);
+}
+
+.cart-item:last-child {
+  border-bottom: none;
+}
+
+.cart-item-image {
+  width: 110px;
+  height: 110px;
+  object-fit: cover;
+  border-radius: 2px;
+  flex-shrink: 0;
+  background: #f5f5f5;
+}
+
+.cart-item-details {
+  flex: 1;
+  min-width: 0;
+}
+
+.cart-item-details h3 {
+  margin: 0 0 0.25rem;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-black);
+}
+
+.cart-item-unit-price {
+  margin: 0 0 0.65rem;
+  font-size: 0.95rem;
+  color: var(--text-black);
+}
+
+.cart-item-quantity {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.cart-item-quantity button {
+  width: 2rem;
+  height: 2rem;
+  border: 1px solid #b0bec5;
+  border-radius: 3px;
+  background: #eceff1;
+  color: var(--text-black);
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  line-height: 1;
+  transition: background 0.15s ease;
+}
+
+.cart-item-quantity button:hover {
+  background: #dfe6e9;
+}
+
+.cart-item-quantity span {
+  min-width: 1.5rem;
+  text-align: center;
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.cart-item-line-total {
+  margin: 0.35rem 0 0.5rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-black);
+}
+
+.cart-item-delete {
+  padding: 0.35rem 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 3px;
+  background: var(--delete-red);
+  color: #fff;
+  cursor: pointer;
+  transition: filter 0.15s ease;
+}
+
+.cart-item-delete:hover {
+  filter: brightness(1.08);
+}
+
+.cart-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.85rem;
+  width: 100%;
+}
+
+.cart-actions a {
+  display: block;
+  width: 100%;
+  max-width: 320px;
+  text-decoration: none;
+}
+
+.continue-shopping-btn,
+.checkout-btn {
+  width: 100%;
+  max-width: 320px;
+  padding: 0.75rem 1.25rem;
+  font-size: 1rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  background: var(--accent-green);
+  color: #fff;
+  transition: background 0.2s ease;
+}
+
+.continue-shopping-btn:hover,
+.checkout-btn:hover {
+  background: var(--accent-green-dark);
+}
+
+/* ----- Landing page ----- */
+.landing-page {
+  min-height: 100vh;
+  box-sizing: border-box;
+  background-color: #263238;
+  background-image: linear-gradient(
+      rgba(0, 0, 0, 0.45),
+      rgba(0, 0, 0, 0.5)
+    ),
+    url("/nursery-hero-bg.png");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2.5rem;
+  padding: 3rem clamp(1.25rem, 4vw, 3.5rem);
+  color: #fff;
+}
+
+.landing-content {
+  flex: 1 1 280px;
+  max-width: 26rem;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.landing-content h1 {
+  margin: 0;
+  font-size: clamp(1.85rem, 4.5vw, 2.65rem);
+  font-weight: 700;
+  line-height: 1.2;
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.35);
+}
+
+.landing-heading-divider {
+  width: 3rem;
+  height: 2px;
+  background: #fff;
+  margin: 1rem 0 0.85rem;
+  opacity: 0.95;
+}
+
+.landing-page .subtitle {
+  margin: 0 0 1.75rem;
+  font-size: 1.05rem;
+  font-weight: 400;
+  color: #fff;
+  opacity: 0.95;
+}
+
+.get-started-btn {
+  padding: 0.75rem 2.25rem;
+  font-size: 1rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  background: var(--accent-green);
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+  transition: background 0.2s ease, transform 0.15s ease;
+}
+
+.get-started-btn:hover {
+  background: var(--accent-green-dark);
+  transform: translateY(-1px);
+}
+
+.about-section {
+  flex: 1 1 300px;
+  max-width: 32rem;
+  margin: 0 auto;
+}
+
+.about-us-container {
+  text-align: left;
+}
+
+.about-us-container p {
+  margin: 0 0 1rem;
+  line-height: 1.6;
+  font-size: 0.95rem;
+  color: #fff;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.35);
+}
+
+.about-us-container p:last-child {
+  margin-bottom: 0;
+}
+
+.about-lead {
+  font-weight: 600;
+  font-size: 1rem;
+}
